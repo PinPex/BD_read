@@ -1,0 +1,26 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="BaseRead.Views.RequestManagerView">
+
+	<UserControl.Styles>
+		<StyleInclude Source="/Styles/Style.axaml"/>
+	</UserControl.Styles>
+
+	<Grid RowDefinitions="*, *, 50, 50, 50" ColumnDefinitions="0.5*, 0.5*, *, 0.5*">
+		<Expander Header="Таблицы" Grid.Row="0" Grid.Column="0" HorizontalContentAlignment="Center">
+		</Expander>
+		<Expander Header="Поля" HorizontalContentAlignment="Center" ExpandDirection="Up" Grid.Row="1" Grid.Column="3">
+		</Expander>
+		<Expander Header="Группировать" Grid.Row="1" Grid.Column="0" ExpandDirection="Up" HorizontalContentAlignment="Center">
+		</Expander>
+		<Expander Header="Запросы" Grid.Row="0" Grid.Column="3" ExpandDirection="Down" HorizontalContentAlignment="Center">
+
+		</Expander>
+		<TextBox Watermark="Имя запроса" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="4"/>
+		<Button Name="Accept" Classes="gridBtn" IsEnabled="False" Content="Выполнить" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="4"/>
+		<Button Classes="gridBtn" Command="{Binding $parent[Window].DataContext.OpenDBViewer}" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="4" Content="Вернуться к базам данных"/>
+	</Grid>
+</UserControl>
