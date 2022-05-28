@@ -9,10 +9,12 @@
   </PropertyGroup>
   <ItemGroup>
     <AvaloniaResource Include="Assets\**" />
+    <AvaloniaResource Remove="Assets\cricket_1.db" />
+    <AvaloniaResource Remove="Assets\cricket_3.db" />
     <None Remove=".gitignore" />
-  </ItemGroup>
-  <ItemGroup>
-    <AvaloniaResource Include="ViewModels\cricket.db" />
+    <None Remove="Assets\cricket_1.db" />
+    <None Remove="Assets\cricket_3.db" />
+    <None Remove="ViewModels\cricket.db" />
   </ItemGroup>
   <ItemGroup>
     <!--This helps with theme dll-s trimming.
