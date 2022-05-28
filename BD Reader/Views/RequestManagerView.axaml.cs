@@ -32,7 +32,29 @@ namespace BaseRead.Views
                 RequestManagerViewModel.ColumnListItem col = columns.SelectedItem as RequestManagerViewModel.ColumnListItem;
                 ListBox group = this.FindControl<ListBox>("GroupsColumnsList");
                 RequestManagerViewModel.ColumnListItem group_by_ = group.SelectedItem as RequestManagerViewModel.ColumnListItem;
-                context.AddRequest(this.FindControl<TextBox>("RequestName").Text, selectedTable, col.ColumnName, group_by_.ColumnName);
+
+                var list = this.FindControl<ListBox>("TablesColumnsList").SelectedItems;
+                var table_name = this.FindControl<ListBox>("TableList").SelectedItems;
+                var groupBy = this.FindControl<ListBox>("GroupsColumnsList").SelectedItems;
+
+
+                List<RequestManagerViewModel.ColumnListItem> ls = new List<RequestManagerViewModel.ColumnListItem>();
+                List<Table> table_names = new List<Table>();
+                List<RequestManagerViewModel.ColumnListItem> grpBy = new List<RequestManagerViewModel.ColumnListItem>();
+                for (int i = 0; i < list.Count; i++)
+                {
+                    ls.Add(list[i] as RequestManagerViewModel.ColumnListItem);
+                }
+                for (int i = 0; i < table_name.Count; i++)
+                {
+                    table_names.Add(table_name[i] as Table);
+                }
+                for (int i = 0; i < groupBy.Count; i++)
+                {
+                    grpBy.Add(groupBy[i] as RequestManagerViewModel.ColumnListItem);
+                }
+
+                context.AddRequest(this.FindControl<TextBox>("RequestName").Text, table_names, ls, grpBy);
                 this.FindControl<Button>("Accept").IsEnabled = false;
 
             }

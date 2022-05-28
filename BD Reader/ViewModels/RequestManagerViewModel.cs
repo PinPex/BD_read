@@ -58,10 +58,8 @@ namespace BaseRead.ViewModels
         }
         public ObservableCollection<string> req { get; set; }
 
-        public void AddRequest(string tableName, string from, string columns, string group_by)
+        public void AddRequest(string tableName, List<Table> table_names, List<RequestManagerViewModel.ColumnListItem> ls, List<RequestManagerViewModel.ColumnListItem> grpBy)
         {
-            if (columns == null)
-                columns = "*";
             string path = @"Assets\cricket.db";
             string directoryPath = Directory.GetCurrentDirectory();
             directoryPath = directoryPath.Remove(directoryPath.LastIndexOf("bin"));
@@ -69,6 +67,27 @@ namespace BaseRead.ViewModels
             SqliteConnection con = new SqliteConnection("Data Source=" + DbPath);
             con.Open();
             SqliteCommand com = new SqliteCommand();
+
+            string columns = "";
+            string from = "";
+            string group_by = "";
+            for(int i = 0; i < ls.Count; i++)
+            {
+                columns += ls[i].ColumnName;
+                if (i != ls.Count - 1) columns += ", ";
+            }
+
+            for (int i = 0; i < table_names.Count; i++)
+            {
+                from += table_names[i].Name;
+                if (i != table_names.Count - 1) from += ", ";
+            }
+            for (int i = 0; i < grpBy.Count; i++)
+            {
+                group_by += grpBy[i].ColumnName;
+                if (i != grpBy.Count - 1) group_by += ", ";
+            }
+
             com.CommandText = "SELECT " + columns + " FROM " + from + " GROUP BY " + group_by + ";";
             com.Connection = con;
             SqliteDataReader read = com.ExecuteReader();
