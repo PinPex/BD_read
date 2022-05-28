@@ -15,5 +15,12 @@ namespace BaseRead.Views
         {
             AvaloniaXamlLoader.Load(this);
         }
+        private void DeleteNullColumn(object control, DataGridAutoGeneratingColumnEventArgs args)
+        {
+            if (args.PropertyName == "Item")
+            {
+                args.Cancel = true;
+            }
+        }
     }
 }

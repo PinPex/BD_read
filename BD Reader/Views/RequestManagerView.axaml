@@ -10,17 +10,49 @@
 	</UserControl.Styles>
 
 	<Grid RowDefinitions="*, *, 50, 50, 50" ColumnDefinitions="0.5*, 0.5*, *, 0.5*">
-		<Expander Header="Таблицы" Grid.Row="0" Grid.Column="0" HorizontalContentAlignment="Center">
+		<Expander Header="Из таблиц" Grid.Row="0" Grid.Column="0" HorizontalContentAlignment="Center">
+			<ListBox Name="TableList" Items="{Binding Tables}" SelectionChanged="TableSelected" SelectionMode="Multiple">
+				<ListBox.ItemTemplate>
+					<DataTemplate>
+						<TextBlock Name="Name_table" Text="{Binding Name}"/>
+					</DataTemplate>
+				</ListBox.ItemTemplate>
+			</ListBox>
 		</Expander>
-		<Expander Header="Поля" HorizontalContentAlignment="Center" ExpandDirection="Up" Grid.Row="1" Grid.Column="3">
+		<Expander Header="Столбцы" HorizontalContentAlignment="Left" Grid.Row="0" Grid.Column="3">
+			<ListBox Name="TablesColumnsList" Width="200" Items="{Binding ColumnList}" SelectionMode="Multiple">
+				<ListBox.ItemTemplate>
+					<DataTemplate>
+						<StackPanel Orientation="Horizontal">
+							<TextBlock Text="{Binding TableName}"/>
+							<TextBlock Text="{Binding ColumnName}"/>
+						</StackPanel>
+					</DataTemplate>
+				</ListBox.ItemTemplate>
+			</ListBox>
 		</Expander>
 		<Expander Header="Группировать" Grid.Row="1" Grid.Column="0" ExpandDirection="Up" HorizontalContentAlignment="Center">
+			<ListBox Name="GroupsColumnsList"  Items="{Binding ColumnList}" SelectionMode="Multiple">
+				<ListBox.ItemTemplate>
+					<DataTemplate>
+						<StackPanel Orientation="Horizontal">
+							<TextBlock Text="{Binding ColumnName}"/>
+						</StackPanel>
+					</DataTemplate>
+				</ListBox.ItemTemplate>
+			</ListBox>
 		</Expander>
-		<Expander Header="Запросы" Grid.Row="0" Grid.Column="3" ExpandDirection="Down" HorizontalContentAlignment="Center">
-
+		<Expander Header="Запросы" Grid.Row="1" Grid.Column="3" ExpandDirection="Up" HorizontalContentAlignment="Center">
+			<ListBox Name="RequestList" Items="{Binding req}" SelectionChanged="TableSelected" SelectionMode="Multiple">
+				<ListBox.ItemTemplate>
+					<DataTemplate>
+						<TextBlock Text="{Binding Name}"/>
+					</DataTemplate>
+				</ListBox.ItemTemplate>
+			</ListBox>
 		</Expander>
-		<TextBox Watermark="Имя запроса" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="4"/>
-		<Button Name="Accept" Classes="gridBtn" IsEnabled="False" Content="Выполнить" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="4"/>
-		<Button Classes="gridBtn" Command="{Binding $parent[Window].DataContext.OpenDBViewer}" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="4" Content="Вернуться к базам данных"/>
+		<TextBox Name="RequestName" Watermark="Имя нового запроса" KeyUp="RequestNameChanged" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="4"/>
+		<Button Name="Accept" Click="AddRequest" Classes="gridBtn" IsEnabled="False" Content="Выполнить" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="4"/>
+		<Button Classes="gridBtn" Command="{Binding $parent[Window].DataContext.OpenDBViewer}" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="4" Content="Вернуться к базе данных"/>
 	</Grid>
 </UserControl>

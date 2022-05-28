@@ -29,10 +29,14 @@ namespace BaseRead.Views
 
         private void DeleteNullColumn(object control, DataGridAutoGeneratingColumnEventArgs args)
         {
-            if (args.PropertyName == "Matches" || args.PropertyName == "Item")
+            if ( args.PropertyName == "Item")
             {
                 args.Cancel = true;
             }
+        }
+        private void Get_table(object control, DataGridAutoGeneratingColumnEventArgs args)
+        {
+
         }
 
     }

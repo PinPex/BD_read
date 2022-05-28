@@ -19,9 +19,9 @@ namespace BaseRead.Models
 
         public virtual DbSet<Matches> Matches { get; set; } = null!;
         public virtual DbSet<Players> Players { get; set; } = null!;
-        public virtual DbSet<Season2021> Season2021 { get; set; } = null!;
-        public virtual DbSet<Season2022> Season2022 { get; set; } = null!;
+        public virtual DbSet<Season_year> Season_year { get; set; } = null!;
         public virtual DbSet<Seasons> Seasons { get; set; } = null!;
+        public virtual DbSet<Teams> Teams { get; set; } = null!;
 
         private string DbPath = @"Assets\cricket.db";
 
@@ -32,7 +32,7 @@ namespace BaseRead.Models
                 string directoryPath = Directory.GetCurrentDirectory();
                 directoryPath = directoryPath.Remove(directoryPath.LastIndexOf("bin"));
                 DbPath = directoryPath + DbPath;
-                optionsBuilder.UseSqlite("Data source=" + DbPath);
+                optionsBuilder.UseSqlite("Data source=" + DbPath + ";Foreign Keys=False");
             }
         }
 
@@ -48,14 +48,13 @@ namespace BaseRead.Models
                 entity.HasKey(e => e.FullName);
             });
 
-            modelBuilder.Entity<Season2021>(entity =>
+            modelBuilder.Entity<Season_year>(entity =>
             {
-                entity.HasKey(e => e.Match);
+                entity.HasKey(e => e.Id);
             });
-
-            modelBuilder.Entity<Season2022>(entity =>
+            modelBuilder.Entity<Teams>(entity =>
             {
-                entity.HasKey(e => e.Match);
+                entity.HasKey(e => e.Id);
             });
 
             modelBuilder.Entity<Seasons>(entity =>

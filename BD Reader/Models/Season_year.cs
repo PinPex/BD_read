@@ -3,9 +3,9 @@ using System.Collections.Generic;
 
 namespace BaseRead.Models
 {
-    public partial class Season2022
+    public partial class Season_year
     {
-
+        public int? Id { get; set; }
         public string Match { get; set; }
 
         public string Date_Year { get; set; }
@@ -21,6 +21,7 @@ namespace BaseRead.Models
             {
                 switch (property)
                 {
+                    case "Id": return Id;
                     case "Match": return Match;
                     case "Date_Year": return Date_Year;
                     case "Date_month_day": return Date_month_day;

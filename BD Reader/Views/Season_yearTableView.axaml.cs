@@ -9,15 +9,16 @@ using System.Collections.ObjectModel;
 using ReactiveUI;
 using System.Reactive;
 using BaseRead.Models;
+using BaseRead.ViewModels;
 using Microsoft.Data.Sqlite;
 using System.IO;
 using System;
 
 namespace BaseRead.Views
 {
-    public partial class Season2022TableView : UserControl
+    public partial class Season_yearTableView : UserControl
     {
-        public Season2022TableView()
+        public Season_yearTableView()
         {
             InitializeComponent();
         }
@@ -29,11 +30,17 @@ namespace BaseRead.Views
 
         private void DeleteNullColumn(object control, DataGridAutoGeneratingColumnEventArgs args)
         {
-            if (args.PropertyName == "Players" || args.PropertyName == "Item")
+            if (args.PropertyName == "Item")
             {
                 args.Cancel = true;
             }
         }
-
+        private void clicked(object control, DataGridAutoGeneratingColumnEventArgs args)
+        {
+            DataGrid dat = this.FindControl<DataGrid>("Table");
+            //int tab = dat;
+            dat.SelectAll();
+            //throw new System.Exception(tab.ToString());
+        }
     }
 }

@@ -14,12 +14,13 @@ namespace BaseRead.ViewModels
 {
     public class DBViewerViewModel : ViewModelBase
     {
-        private ObservableCollection<Table> tables;
-        private ObservableCollection<Matches> match;
-        private ObservableCollection<Players> players;
-        private ObservableCollection<Season2021> Season2021;
-        private ObservableCollection<Season2022> Season2022;
-        private ObservableCollection<Seasons> Seasons;
+        public ObservableCollection<Table> tables;
+        public ObservableCollection<Matches> match;
+        public ObservableCollection<Players> players;
+        public ObservableCollection<Season_year> Season_year;
+        public ObservableCollection<Seasons> Seasons;
+        public ObservableCollection<Teams> Teams;
+        public ObservableCollection<Table> requests;
 
         private ObservableCollection<string> FindProperties(string entityName, List<string> properties)
         {
@@ -62,15 +63,15 @@ namespace BaseRead.ViewModels
 
 
                 match = new ObservableCollection<Matches>(DataBase.Matches);
-                tables.Add(new Table("Матчи", false, new MatchesTableViewModel(match), FindProperties("Matches", properties)));
+                tables.Add(new Table("Matches", false, new MatchesTableViewModel(match), FindProperties("Matches", properties)));
                 players = new ObservableCollection<Players>(DataBase.Players);
-                tables.Add(new Table("Игроки", false, new PlayersTableViewModel(players), FindProperties("Players", properties)));
-                Season2021 = new ObservableCollection<Season2021>(DataBase.Season2021);
-                tables.Add(new Table("Сезон 2021", false, new Season2021TableViewModel(Season2021), FindProperties("Season2021", properties)));
-                Season2022 = new ObservableCollection<Season2022>(DataBase.Season2022);
-                tables.Add(new Table("Сезон 2022", false, new Season2022TableViewModel(Season2022), FindProperties("Season2022", properties)));
+                tables.Add(new Table("Players", false, new PlayersTableViewModel(players), FindProperties("Players", properties)));
+                Season_year = new ObservableCollection<Season_year>(DataBase.Season_year);
+                tables.Add(new Table("Season_year", false, new Season_yearTableViewModel(Season_year), FindProperties("Season_year", properties)));
                 Seasons = new ObservableCollection<Seasons>(DataBase.Seasons);
-                tables.Add(new Table("Все сезоны", false, new SeasonsTableViewModel(Seasons), FindProperties("Seasons", properties)));
+                tables.Add(new Table("Seasons", false, new SeasonsTableViewModel(Seasons), FindProperties("Seasons", properties)));
+                Teams = new ObservableCollection<Teams>(DataBase.Teams);
+                tables.Add(new Table("Teams", false, new TeamsTableViewModel(Teams), FindProperties("Teams", properties)));
         }
 
         public ObservableCollection<Table> Tables
@@ -87,6 +88,14 @@ namespace BaseRead.ViewModels
             set
             {
                 this.RaiseAndSetIfChanged(ref match, value);
+            }
+        }
+        public ObservableCollection<Table> Requests
+        {
+            get => requests;
+            set
+            {
+                this.RaiseAndSetIfChanged(ref requests, value);
             }
         }
     }

@@ -12,15 +12,15 @@ using System;
 
 namespace BaseRead.ViewModels
 {
-    public class Season2021TableViewModel : ViewModelBase
+    public class Season_yearTableViewModel : ViewModelBase
     {
-        private ObservableCollection<Season2021> table;
-        public Season2021TableViewModel(ObservableCollection<Season2021> _cars)
+        private ObservableCollection<Season_year> table;
+        public Season_yearTableViewModel(ObservableCollection<Season_year> _cars)
         {
             Table = _cars;
         }
 
-        public ObservableCollection<Season2021> Table
+        public ObservableCollection<Season_year> Table
         {
             get
             {
@@ -32,7 +32,7 @@ namespace BaseRead.ViewModels
             }
         }
 
-        public override ObservableCollection<Season2021> GetTable()
+        public override ObservableCollection<Season_year> GetTable()
         {
             return Table;
         }

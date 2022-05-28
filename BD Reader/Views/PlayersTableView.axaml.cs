@@ -29,7 +29,7 @@ namespace BaseRead.Views
 
         private void DeleteNullColumn(object control, DataGridAutoGeneratingColumnEventArgs args)
         {
-            if (args.PropertyName == "Players" || args.PropertyName == "Item")
+            if (args.PropertyName == "Item")
             {
                 args.Cancel = true;
             }

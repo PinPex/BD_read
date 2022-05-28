@@ -12,6 +12,9 @@
     <None Remove=".gitignore" />
   </ItemGroup>
   <ItemGroup>
+    <AvaloniaResource Include="ViewModels\cricket.db" />
+  </ItemGroup>
+  <ItemGroup>
     <!--This helps with theme dll-s trimming.
 	If you will publish your application in self-contained mode with p:PublishTrimmed=true and it will use Fluent theme Default theme will be trimmed from the output and vice versa.
 	https://github.com/AvaloniaUI/Avalonia/issues/5593 -->
@@ -46,14 +49,14 @@
     <Compile Update="Views\RequestManagerView.axaml.cs">
       <DependentUpon>RequestManagerView.axaml</DependentUpon>
     </Compile>
-    <Compile Update="Views\Season2021TableView.axaml.cs">
-      <DependentUpon>Season2021TableView.axaml</DependentUpon>
+    <Compile Update="Views\TeamsTableView.axaml.cs">
+      <DependentUpon>TeamsTableView.axaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Season_yearTableView.axaml.cs">
+      <DependentUpon>Season_yearTableView.axaml</DependentUpon>
     </Compile>
     <Compile Update="Views\SeasonsTableView.axaml.cs">
       <DependentUpon>SeasonsTableView.axaml</DependentUpon>
-    </Compile>
-    <Compile Update="Views\Season2022TableView.axaml.cs">
-      <DependentUpon>Season2022TableView.axaml</DependentUpon>
     </Compile>
     <Compile Update="Views\PlayersTableView.axaml.cs">
       <DependentUpon>PlayersTableView.axaml</DependentUpon>

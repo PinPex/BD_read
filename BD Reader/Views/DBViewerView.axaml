@@ -10,7 +10,7 @@
 	</UserControl.Styles>
 
 	<Grid RowDefinitions="*, 50" ColumnDefinitions="*" >
-		<TabControl Grid.Row="0" Grid.Column="0" Items="{Binding Tables}">
+		<TabControl Name="nameTables" Grid.Row="0" Grid.Column="0" Items="{Binding Tables}">
 			<TabControl.ItemTemplate>
 				<DataTemplate>
 					<StackPanel Orientation="Horizontal">
@@ -21,11 +21,20 @@
 			</TabControl.ItemTemplate>
 			<TabControl.ContentTemplate>
 				<DataTemplate>
-					<UserControl Content="{Binding TableView}"/>
+					<UserControl Name="Tableview" Content="{Binding TableView}">
+					</UserControl>
 				</DataTemplate>
 			</TabControl.ContentTemplate>
 		</TabControl>
-		<Button Classes="gridBtn" Grid.Row="1" Grid.Column="0" Content="Открыть менеджер запросов" Command="{Binding $parent[Window].DataContext.OpenQueryManager}"/>
+		<Button Classes="gridBtn" Grid.Row="1" Grid.Column="0" Content="Открыть менеджер запросов" Command="{Binding $parent[Window].DataContext.OpenQueryManager}"></Button>
+
+		<Button HorizontalAlignment="Right"   Content="Добавить строку" Click="AddStroke">
+		</Button>
+		<Button Content="Удалить строку" Click="DeleteStroke">
+		</Button>
+		<Button Grid.Row="1" Content="Сохранить таблицу" Click="SaveTab">
+		</Button>
 	</Grid>
+	
 	
 </UserControl>
