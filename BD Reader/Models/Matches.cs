@@ -31,5 +31,7 @@ namespace BaseRead.Models
                 return null;
             }
         }
+        public virtual Players PlayersIdNavigation { get; set; }
+        public virtual ICollection<Teams> TeamsIdNavigation { get; set; }
     }
 }

@@ -32,5 +32,7 @@ namespace BaseRead.Models
                 return null;
             }
         }
+
+        public virtual Seasons SeasonsIdNavigation { get; set; }
     }
 }

@@ -41,6 +41,9 @@ namespace BaseRead.Models
             modelBuilder.Entity<Matches>(entity =>
             {
                 entity.HasKey(e => e.Match);
+                entity.HasOne(d => d.PlayersIdNavigation)
+                .WithMany(p => p.MatchesIdNavigation)
+                .HasForeignKey(d => d.Player_of_match);
             });
 
             modelBuilder.Entity<Players>(entity =>
@@ -51,15 +54,27 @@ namespace BaseRead.Models
             modelBuilder.Entity<Season_year>(entity =>
             {
                 entity.HasKey(e => e.Id);
+                entity.HasOne(d => d.SeasonsIdNavigation)
+                .WithMany(p => p.Season_yearIdNavigation)
+                .HasForeignKey(d => d.Date_month_day);
             });
             modelBuilder.Entity<Teams>(entity =>
             {
                 entity.HasKey(e => e.Id);
+
+                entity.HasOne(d => d.PlayersIdNavigation)
+                .WithMany(p => p.TeamsIdNavigation)
+                .HasForeignKey(d => d.Players);
+
+                entity.HasOne(d => d.MatchesIdNavigation)
+                .WithMany(p => p.TeamsIdNavigation)
+                .HasForeignKey(d => d.Match);
             });
 
             modelBuilder.Entity<Seasons>(entity =>
             {
                 entity.HasKey(e => e.Year);
+                
             });
 
             OnModelCreatingPartial(modelBuilder);

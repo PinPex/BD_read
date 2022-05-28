@@ -26,5 +26,7 @@ namespace BaseRead.Models
                 return null;
             }
         }
+        public virtual Players PlayersIdNavigation { get; set; }
+        public virtual Matches MatchesIdNavigation { get; set; }
     }
 }

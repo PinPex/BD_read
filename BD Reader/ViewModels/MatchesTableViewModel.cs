@@ -14,6 +14,7 @@ namespace BaseRead.ViewModels
 {
     public class MatchesTableViewModel : ViewModelBase
     {
+        public int Index_of_data_grid = 0;
         private ObservableCollection<Matches> table;
         public MatchesTableViewModel(ObservableCollection<Matches> _cars)
         {

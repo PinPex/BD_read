@@ -29,5 +29,7 @@ namespace BaseRead.Models
                 return null;
             }
         }
+        public virtual ICollection<Matches> MatchesIdNavigation { get; set; }
+        public virtual ICollection<Teams> TeamsIdNavigation { get; set; }
     }
 }

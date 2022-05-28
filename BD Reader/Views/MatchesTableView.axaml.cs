@@ -9,6 +9,7 @@ using System.Collections.ObjectModel;
 using ReactiveUI;
 using System.Reactive;
 using BaseRead.Models;
+using BaseRead.ViewModels;
 using Microsoft.Data.Sqlite;
 using System.IO;
 using System;
@@ -34,9 +35,11 @@ namespace BaseRead.Views
                 args.Cancel = true;
             }
         }
-        private void Get_table(object control, DataGridAutoGeneratingColumnEventArgs args)
+        private void get_index(object control, DataGridAutoGeneratingColumnEventArgs args)
         {
-
+            MatchesTableViewModel mat = this.DataContext as MatchesTableViewModel;
+            DataGrid dat = this.FindControl<DataGrid>("Table");
+            mat.Index_of_data_grid = dat.SelectedIndex;
         }
 
     }

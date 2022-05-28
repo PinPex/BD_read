@@ -22,5 +22,7 @@ namespace BaseRead.Models
                 return null;
             }
         }
+        public virtual ICollection<Season_year> Season_yearIdNavigation { get; set; }
+        
     }
 }
