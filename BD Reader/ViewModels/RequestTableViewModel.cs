@@ -14,13 +14,15 @@ namespace BaseRead.ViewModels
 {
     public class RequestTableViewModel : MainWindowViewModel
     {
-        private List<List<object>> queryList;
-        public RequestTableViewModel(List<List<object>> _queryList)
+        public ObservableCollection<string[]> Rows { get; set; }
+
+        private List<List<string>> queryList;
+        public RequestTableViewModel(List<List<string>> _queryList)
         {
             queryList = _queryList;
         }
 
-        public List<List<object>> QueryList
+        public List<List<string>> QueryList
         {
             get
             {

@@ -15,9 +15,9 @@ namespace BaseRead.ViewModels
     public class SeasonsTableViewModel : ViewModelBase
     {
         private ObservableCollection<Seasons> table;
-        public SeasonsTableViewModel(ObservableCollection<Seasons> _cars)
+        public SeasonsTableViewModel(ObservableCollection<Seasons> seasons)
         {
-            Table = _cars;
+            Table = seasons;
         }
 
         public ObservableCollection<Seasons> Table

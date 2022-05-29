@@ -99,8 +99,9 @@ namespace BaseRead.Views
         {
             Button? btn = control as Button;
             DBViewerViewModel? context = this?.DataContext as DBViewerViewModel;
-            UserControl ctrl = this.FindControl<UserControl>("Tableview");
-            throw new System.Exception(ctrl.ToString());
+            Table table_name = this.FindControl<TabControl>("nameTables").SelectedItem as Table;
+            string table_n = table_name.Name.ToString();
+            
             if (btn != null)
             {
             }

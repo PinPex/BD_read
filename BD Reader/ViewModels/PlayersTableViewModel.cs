@@ -15,9 +15,9 @@ namespace BaseRead.ViewModels
     public class PlayersTableViewModel : ViewModelBase
     {
         private ObservableCollection<Players> table;
-        public PlayersTableViewModel(ObservableCollection<Players> _cars)
+        public PlayersTableViewModel(ObservableCollection<Players> players)
         {
-            Table = _cars;
+            Table = players;
         }
 
         public ObservableCollection<Players> Table

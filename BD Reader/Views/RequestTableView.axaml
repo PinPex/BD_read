@@ -4,11 +4,11 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="BaseRead.Views.RequestTableView">
-
-	<ListBox Items="{Binding QueryList}">
+	
+	<ListBox Items="{Binding QueryList}" >
 		<ListBox.ItemsPanel>
 			<ItemsPanelTemplate>
-				<StackPanel Orientation="Horizontal">
+				<StackPanel Orientation="Vertical">
 					
 				</StackPanel>
 			</ItemsPanelTemplate>

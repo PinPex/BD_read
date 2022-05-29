@@ -69,9 +69,17 @@ namespace BaseRead.ViewModels
             SqliteCommand com = new SqliteCommand();
 
             string columns = "";
-            string from = "";
-            string group_by = "";
-            for(int i = 0; i < ls.Count; i++)
+            string from = " FROM ";
+            string group_by = " GROUP BY ";
+
+            if (ls.Count == 0)
+                columns = "*";
+            if (table_names.Count == 0)
+                return;
+            if (grpBy.Count == 0)
+                group_by = "";
+
+            for (int i = 0; i < ls.Count; i++)
             {
                 columns += ls[i].ColumnName;
                 if (i != ls.Count - 1) columns += ", ";
@@ -88,21 +96,23 @@ namespace BaseRead.ViewModels
                 if (i != grpBy.Count - 1) group_by += ", ";
             }
 
-            com.CommandText = "SELECT " + columns + " FROM " + from + " GROUP BY " + group_by + ";";
+            com.CommandText = "SELECT " + columns + from + group_by + ";";
             com.Connection = con;
             SqliteDataReader read = com.ExecuteReader();
-            List<List<object>> list = new List<List<object>>();
+            List<List<string>> list = new List<List<string>>();
             if (read.HasRows)
             {
-                List<object> a = new List<object>();
+                
                 while (read.Read())
                 {
+                    List<string> a = new List<string>();
                     for (int i = 0; i < read.FieldCount; ++i)
                     {
-                        a.Add(read.GetValue(i));
+                        a.Add(read.GetValue(i).ToString());
                     }
                     list.Add(a);
                 }
+                
                 tables.Add(new Table(tableName, true, new RequestTableViewModel(list), new ObservableCollection<string>()));
                 req.Add(tableName);
             }

@@ -15,9 +15,9 @@ namespace BaseRead.ViewModels
     public class TeamsTableViewModel : ViewModelBase
     {
         private ObservableCollection<Teams> table;
-        public TeamsTableViewModel(ObservableCollection<Teams> _cars)
+        public TeamsTableViewModel(ObservableCollection<Teams> teams)
         {
-            Table = _cars;
+            Table = teams;
         }
 
         public ObservableCollection<Teams> Table
